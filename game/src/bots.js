@@ -5,15 +5,15 @@
 import * as THREE from 'three';
 import { BOTS } from './config.js';
 
-const SKINS = [0x5a3a28, 0x3a4a2e, 0x2e3a4a, 0x4a2e3a, 0x3a3a3a];
+const SKINS = [0x7a5238, 0x55683e, 0x42566a, 0x6a4256, 0x545454];
 const NAMES = ['Viper-1', 'Viper-2', 'Viper-3', 'Viper-4', 'Viper-5'];
 
 function buildViper(skin) {
   const group = new THREE.Group();
-  const suit = new THREE.MeshStandardMaterial({ color: skin, roughness: 0.85, metalness: 0.1 });
-  const vest = new THREE.MeshStandardMaterial({ color: 0x22242a, roughness: 0.7, metalness: 0.3 });
-  const skinMat = new THREE.MeshStandardMaterial({ color: 0xc9a586, roughness: 0.8 });
-  const gunMat = new THREE.MeshStandardMaterial({ color: 0x1a1c1f, roughness: 0.4, metalness: 0.7 });
+  const suit = new THREE.MeshStandardMaterial({ color: skin, roughness: 0.8, metalness: 0.12 });
+  const vest = new THREE.MeshStandardMaterial({ color: 0x2e3238, roughness: 0.65, metalness: 0.35 });
+  const skinMat = new THREE.MeshStandardMaterial({ color: 0xd8b596, roughness: 0.75 });
+  const gunMat = new THREE.MeshStandardMaterial({ color: 0x2a2e33, roughness: 0.4, metalness: 0.7 });
 
   const torso = new THREE.Mesh(new THREE.BoxGeometry(0.52, 0.62, 0.3), suit);
   torso.position.y = 1.05;
@@ -25,7 +25,7 @@ function buildViper(skin) {
   head.castShadow = true;
   const helmet = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.14, 0.34), vest);
   helmet.position.y = 1.68;
-  const visor = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.08, 0.04), new THREE.MeshStandardMaterial({ color: 0xff5a2a, emissive: 0x881800, roughness: 0.3 }));
+  const visor = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.08, 0.04), new THREE.MeshStandardMaterial({ color: 0xff5a2a, emissive: 0xcc2200, emissiveIntensity: 1.4, roughness: 0.3 }));
   visor.position.set(0, 1.56, 0.16);
   const legL = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.75, 0.22), suit);
   legL.position.set(-0.14, 0.38, 0);

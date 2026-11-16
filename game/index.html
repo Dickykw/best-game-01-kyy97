@@ -174,6 +174,9 @@
   }
   #controls-card.show { display: block; }
   #controls-card b { color: var(--accent); font-family: var(--font-readout); }
+  /* on touch the card lists keyboard keys and covers the round chips: hide it,
+     the touch buttons are the controls */
+  body.touch #controls-card { display: none !important; }
 
   /* touch controls: two clear zones, no overlap with the HUD readouts */
   body.touch #look-area { display: block; }

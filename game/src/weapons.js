@@ -8,10 +8,10 @@ import { createGrenadeSim } from './grenade.js';
 
 export { GRENADE_PRICE };
 
-const GUNMETAL = 0x23262b;
-const STEEL = 0x3a4048;
-const POLYMER = 0x17191c;
-const GRIP = 0x2e2a24;
+const GUNMETAL = 0x33373d;
+const STEEL = 0x565e68;
+const POLYMER = 0x2b2e33;
+const GRIP = 0x6b4a28;
 const AMBER = 0xf0a830;
 
 function mat(color, metalness = 0.65, roughness = 0.45) {
@@ -47,30 +47,36 @@ function sprayTable(kind) {
 function buildRifle() {
   const g = new THREE.Group();
   const gm = mat(GUNMETAL), st = mat(STEEL, 0.7, 0.35), pl = mat(POLYMER, 0.2, 0.7);
+  const grip = mat(GRIP, 0.15, 0.75);
   g.add(part(0.07, 0.09, 0.5, gm, 0, 0, -0.1));
   g.add(part(0.06, 0.07, 0.34, st, 0, 0.01, -0.48));
   g.add(cylinder(0.02, 0.02, 0.16, st, 0, 0.01, -0.72, Math.PI / 2));
   g.add(part(0.05, 0.05, 0.06, pl, 0, 0.01, -0.8));
+  // warm wood handguard so the rifle is not one black slab
+  g.add(part(0.075, 0.085, 0.3, grip, 0, 0, -0.42));
   g.add(part(0.05, 0.16, 0.09, pl, 0, -0.11, -0.28, 0.35));
   g.add(part(0.06, 0.05, 0.16, pl, 0, -0.02, 0.18));
-  g.add(part(0.05, 0.09, 0.05, pl, 0, -0.1, 0.1, 0.5));
+  g.add(part(0.05, 0.09, 0.05, grip, 0, -0.1, 0.1, 0.5));
   g.add(part(0.05, 0.03, 0.1, mat(AMBER, 0.3, 0.5), 0, -0.16, -0.28));
   g.add(part(0.02, 0.05, 0.02, st, 0, 0.06, -0.32));
   g.add(part(0.02, 0.04, 0.02, st, 0, 0.055, -0.62));
   g.add(part(0.04, 0.03, 0.08, st, 0.05, 0.02, -0.05));
+  // rear sight ring
+  g.add(part(0.05, 0.05, 0.02, st, 0, 0.055, -0.12));
   return g;
 }
 
 function buildSmg() {
   const g = new THREE.Group();
   const gm = mat(GUNMETAL), st = mat(STEEL, 0.7, 0.35), pl = mat(POLYMER, 0.2, 0.7);
+  const grip = mat(GRIP, 0.15, 0.75);
   g.add(part(0.08, 0.1, 0.34, gm, 0, 0, -0.08));
-  g.add(part(0.07, 0.08, 0.22, pl, 0, 0, -0.32));
+  g.add(part(0.07, 0.08, 0.22, grip, 0, 0, -0.32));
   g.add(cylinder(0.03, 0.03, 0.2, st, 0, 0, -0.52, Math.PI / 2));
   g.add(part(0.05, 0.18, 0.08, pl, 0, -0.12, -0.2, 0.3));
   g.add(part(0.04, 0.1, 0.04, pl, 0, -0.1, -0.38));
   g.add(part(0.05, 0.05, 0.12, pl, 0, -0.02, 0.16));
-  g.add(part(0.05, 0.08, 0.05, pl, 0, -0.09, 0.08, 0.5));
+  g.add(part(0.05, 0.08, 0.05, grip, 0, -0.09, 0.08, 0.5));
   // red dot
   g.add(part(0.05, 0.05, 0.06, pl, 0, 0.075, -0.18));
   g.add(part(0.03, 0.03, 0.01, mat(0xff3020, 0.1, 0.3), 0, 0.075, -0.215));
@@ -80,10 +86,11 @@ function buildSmg() {
 function buildPistol() {
   const g = new THREE.Group();
   const gm = mat(GUNMETAL), st = mat(STEEL, 0.7, 0.35), pl = mat(POLYMER, 0.2, 0.7);
+  const grip = mat(GRIP, 0.15, 0.75);
   g.add(part(0.05, 0.05, 0.24, gm, 0, 0.01, -0.1));
   g.add(part(0.045, 0.04, 0.22, pl, 0, -0.025, -0.08));
   g.add(cylinder(0.012, 0.012, 0.05, st, 0, 0.01, -0.24, Math.PI / 2));
-  g.add(part(0.04, 0.11, 0.05, pl, 0, -0.09, 0.04, 0.35));
+  g.add(part(0.04, 0.11, 0.05, grip, 0, -0.09, 0.04, 0.35));
   g.add(part(0.04, 0.02, 0.06, pl, 0, -0.06, -0.02));
   g.add(part(0.015, 0.03, 0.015, st, 0, 0.045, -0.2));
   g.add(part(0.015, 0.03, 0.015, st, 0, 0.045, -0.02));

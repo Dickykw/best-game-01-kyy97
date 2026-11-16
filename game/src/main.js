@@ -29,14 +29,14 @@ renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFShadowMap;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.3;
+renderer.toneMappingExposure = 1.45;
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(74, innerWidth / innerHeight, 0.08, 220);
 const listener = new THREE.AudioListener();
 camera.add(listener);
 // a soft light on the camera so the viewmodel and near cover read clearly
-const camLight = new THREE.PointLight(0xffe0b0, 0.55, 5);
+const camLight = new THREE.PointLight(0xffe0b0, 0.95, 6);
 camLight.position.set(0.2, 0.1, -0.3);
 camera.add(camLight);
 scene.add(camera);
