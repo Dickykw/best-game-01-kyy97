@@ -175,42 +175,44 @@
   #controls-card.show { display: block; }
   #controls-card b { color: var(--accent); font-family: var(--font-readout); }
 
-  /* touch controls */
+  /* touch controls: two clear zones, no overlap with the HUD readouts */
   body.touch #look-area { display: block; }
   body.touch #touch-ui { display: block; }
   #look-area { display: none; position: fixed; right: 0; top: 0; width: 55%; height: 100%; pointer-events: auto; }
   #touch-ui { display: none; position: fixed; inset: 0; pointer-events: none; }
   #joy {
-    position: fixed; left: 26px; bottom: 96px; width: 124px; height: 124px;
+    position: fixed; left: 20px; bottom: 90px; width: 120px; height: 120px;
     border-radius: 50%; background: rgba(255,255,255,.07);
     border: 1px solid rgba(255,255,255,.22); pointer-events: auto;
   }
   #joy-knob {
-    position: absolute; left: 50%; top: 50%; width: 54px; height: 54px;
+    position: absolute; left: 50%; top: 50%; width: 52px; height: 52px;
     border-radius: 50%; background: rgba(255,255,255,.28);
     transform: translate(-50%, -50%);
   }
   .tbtn {
     position: fixed; pointer-events: auto;
-    width: 62px; height: 62px; border-radius: 50%;
+    width: 60px; height: 60px; border-radius: 50%;
     background: rgba(20,22,26,.6); border: 1px solid rgba(255,255,255,.3);
     color: var(--ink); font-family: var(--font-readout); font-size: 13px; font-weight: 700;
     display: flex; align-items: center; justify-content: center;
   }
   .tbtn:active { background: rgba(240,168,48,.5); }
-  #btn-fire { right: 22px; bottom: 96px; width: 78px; height: 78px; background: rgba(255,90,42,.45); font-size: 15px; }
-  #btn-reload { right: 112px; bottom: 178px; }
-  #btn-jump { right: 30px; bottom: 196px; }
-  #btn-crouch { right: 118px; bottom: 96px; }
-  #btn-plant { right: 200px; bottom: 150px; }
-  #btn-nade { right: 200px; bottom: 222px; }
-  #btn-buy { right: 22px; bottom: 290px; }
-  #btn-w1 { left: 26px; bottom: 236px; width: 48px; height: 48px; }
-  #btn-w2 { left: 84px; bottom: 236px; width: 48px; height: 48px; }
-  #btn-w3 { left: 142px; bottom: 236px; width: 48px; height: 48px; }
-  /* on touch the ammo readout sits clear of the RLD button */
-  body.touch #weapon-box { bottom: 290px; }
-  body.touch #health-box { bottom: 236px; }
+  /* right grid: FIRE/JUMP/Plant in the outer column, CRCH/RLD/Nade inside */
+  #btn-fire { right: 16px; bottom: 90px; width: 76px; height: 76px; background: rgba(255,90,42,.45); font-size: 15px; }
+  #btn-jump { right: 16px; bottom: 180px; }
+  #btn-plant { right: 16px; bottom: 255px; }
+  #btn-buy { right: 16px; bottom: 330px; }
+  #btn-crouch { right: 108px; bottom: 90px; }
+  #btn-reload { right: 108px; bottom: 180px; }
+  #btn-nade { right: 108px; bottom: 255px; }
+  /* weapon picker row above the joystick */
+  #btn-w1 { left: 20px; bottom: 225px; width: 48px; height: 48px; }
+  #btn-w2 { left: 76px; bottom: 225px; width: 48px; height: 48px; }
+  #btn-w3 { left: 132px; bottom: 225px; width: 48px; height: 48px; }
+  /* on touch the readouts sit clear of every button */
+  body.touch #health-box { bottom: 290px; width: 190px; }
+  body.touch #weapon-box { bottom: 405px; }
 </style>
 </head>
 <body>
