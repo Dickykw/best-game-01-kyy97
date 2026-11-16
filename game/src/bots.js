@@ -325,9 +325,10 @@ export function createBots(scene, world, listener = null) {
         const sx = bot.pos.x + side.x * bot.strafeDir * bot.speed * 0.5 * dt;
         const sz = bot.pos.z + side.z * bot.strafeDir * bot.speed * 0.5 * dt;
         moveBot(bot, dt, sx, sz);
-        // shoot after the reaction delay
+        // shoot after the reaction delay — and never in the first 4 s
+        // of a live round, so the player can get oriented first
         bot.shootCooldown -= dt;
-        if (seen && time >= bot.reactionAt && bot.shootCooldown <= 0) {
+        if (seen && time >= bot.reactionAt && time - (ctx.liveAt || 0) >= 4 && bot.shootCooldown <= 0) {
           bot.shootCooldown = BOTS.shotMin + Math.random() * (BOTS.shotMax - BOTS.shotMin);
           const dist = bot.pos.distanceTo(playerPos);
           let chance = dist < 10 ? BOTS.hitNear : BOTS.hitFar + (BOTS.hitNear - BOTS.hitFar) * Math.max(0, 1 - (dist - 10) / 30);

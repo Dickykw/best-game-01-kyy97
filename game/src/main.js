@@ -255,6 +255,7 @@ function step(dt) {
     if (match.phaseT <= 0) {
       match.phase = 'live';
       match.phaseT = 0;
+      match.liveAt = time;
       hud.setPhase('live', match.round, match.scoreUs, match.scoreThem);
       hud.showBuy(false);
       match.buyOpen = false;
@@ -360,6 +361,7 @@ function step(dt) {
       bombPlanted: bomb.state === 'planted',
       bombSite: bomb.site,
       time,
+      liveAt: match.liveAt || 0,
       noisePos,
     });
     for (const e of events) {
@@ -474,6 +476,7 @@ if (!SHOT && !JUDGE) {
   arsenal.addGrenade(2);
   match.phase = 'live';
   match.phaseT = 0;
+  match.liveAt = time;
   hud.setPhase('live', 1, 0, 0);
   hud.setMoney(eco.money);
 }
@@ -489,6 +492,7 @@ if (SHOT === 'start') {
   beginMatch();
   match.phase = 'live';
   match.phaseT = 0;
+  match.liveAt = time;
   eco.add(5000);
   arsenal.buy('rifle');
   arsenal.switchTo('rifle');

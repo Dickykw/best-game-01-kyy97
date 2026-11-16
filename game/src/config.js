@@ -68,8 +68,8 @@ export const GRENADE_PRICE = 400;
 
 export const BOTS = {
   count: 5, health: 100, walkSpeed: 3.2, sightRange: 55, sightCone: 2.6,
-  reactMin: 0.35, reactMax: 0.6, shotMin: 0.55, shotMax: 0.9,
-  hitNear: 0.32, hitFar: 0.10, damageMin: 8, damageMax: 22,
+  reactMin: 0.7, reactMax: 1.2, shotMin: 0.55, shotMax: 0.9,
+  hitNear: 0.32, hitFar: 0.05, damageMin: 8, damageMax: 22,
   loseSight: 1.2, separation: 0.8,
 };
 
